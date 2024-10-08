@@ -8,16 +8,13 @@ class MenuScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Menu"),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {}, // Handle back button press
-        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             const ListTile(
               title: Text("Rajat Baviskar"),
+              leading: Icon(Icons.person),
               subtitle: Text("rajatbaviskar@example.com"),
             ),
             const Divider(),
@@ -39,22 +36,43 @@ class MenuScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1, // Set the active tab index
-        items: [
-          const BottomNavigationBarItem(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 0, // Set this dynamically if needed
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Navigator.pushNamed(context, "Home");
+              break;
+            case 1:
+              Navigator.pushNamed(context, "Analytic");
+              break;
+            case 2:
+              Navigator.pushNamed(context, "Calender");
+              break;
+            case 3:
+              Navigator.pushNamed(context, "Menu");
+              break;
+          }
+        },
+        items: const [
+          BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+          BottomNavigationBarItem(
+            icon: Icon(Icons.analytics),
+            label: 'Analytics',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_month),
+            label: 'Calendar',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
         ],
-      ),
+      ), // Set
     );
   }
 

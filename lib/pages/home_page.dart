@@ -170,38 +170,49 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.home),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, "Analytic");
-                        },
-                        icon: Icon(Icons.analytics),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, "Calender");
-                        },
-                        icon: Icon(Icons.calendar_month),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, "Menu");
-                        },
-                        icon: Icon(Icons.person),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: 0, // Set this dynamically if needed
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Navigator.pushNamed(context, "Home");
+              break;
+            case 1:
+              Navigator.pushNamed(context, "Analytic");
+              break;
+            case 2:
+              Navigator.pushNamed(context, "Calender");
+              break;
+            case 3:
+              Navigator.pushNamed(context, "Menu");
+              break;
+          }
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.analytics),
+            label: 'Analytics',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_month),
+            label: 'Calendar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }
